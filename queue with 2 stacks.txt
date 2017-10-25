@@ -1,0 +1,69 @@
+class StackNode(object):
+    def __init__(self, data=None,next=None):
+        self.data=data
+        self.next=next
+    def get_data(self):
+        return self.data
+    def get_next(self):
+        return self.next
+    def set_next(self, new):
+        self.next=new
+class Stack:
+    def __init__(self, top=None):
+        self.top=top
+    def insert(self,data):
+        n=StackNode(data)
+        current_top=self.top
+        if current_top!=None:
+            n.set_next(current_top)
+        self.top=n
+    def peek(self):
+        return self.top.get_data()
+    def delete(self):
+        if self.top==None:
+            print("Null stack")
+        else:
+            self.top=self.top.get_next()
+
+class MyQueue(object):
+    def __init__(self,top=None):
+        self.stack1=Stack()
+        self.stack2=Stack()
+    def peek(self):
+        print("value print", self.stack1.peek())
+        return self.stack1.peek()
+        
+    def pop(self):
+        print("value deleted", self.stack1.peek())
+        self.stack1.delete()    
+        print("self.stack1.top", self.stack1.top)
+        
+    def put(self, value):
+        print("value in", value)
+        if self.stack1.top==None:
+            print("top none")
+            self.stack1.insert(value)
+        else:
+            
+            while self.stack1.top!=None:
+                print("self.stack1.top", self.stack1.top.data)
+                self.stack2.insert(self.stack1.peek())
+                self.stack1.delete()
+            self.stack2.insert(value)
+            print("self.stack2.top", self.stack2.top.data)
+            while self.stack2.top!=None:
+                self.stack1.insert(self.stack2.peek())
+                self.stack2.delete()
+       
+queue = MyQueue()
+t = int(input())
+for line in range(t):
+    values = map(int, input().split())
+    values = list(values)
+    if values[0] == 1:
+        queue.put(values[1])        
+    elif values[0] == 2:
+        queue.pop()
+    else:
+        print(queue.peek())
+        

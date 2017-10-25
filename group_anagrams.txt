@@ -1,0 +1,19 @@
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        dict={}
+        for i in range(len(strs)):
+            key= str(''.join(sorted(strs[i])))
+            print(key)
+            if key in dict:
+                dict[key].append(str(''.join(strs[i])))
+            else:
+                dict[key]=[str(''.join(strs[i]))]
+        print(dict)
+        list1=[]
+        for key in dict:
+            list1.append(dict[key])
+        print(list1)

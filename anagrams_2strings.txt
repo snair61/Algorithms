@@ -1,0 +1,32 @@
+str1='listen'
+
+str2='silentt'
+
+dict={}
+for i in range(len(str1)):
+  
+	if str1[i] in dict:
+    
+		dict[str1[i]]+=1
+  
+	else:
+    
+		dict[str1[i]]=1
+
+print(dict)
+
+for i in range(len(str2)):
+  
+	if str2[i] in dict:
+    
+		dict[str2[i]]-=1
+  
+	else:
+    
+		print("not an anagream_no such char")
+
+for key in dict:
+  
+	if dict[key]!=0:
+    
+		print("not an anagream repeat")

@@ -1,0 +1,20 @@
+class Solution(object):
+    def Check(self,s,i,j):
+        while i>=0 and j<len(s) and s[i]==s[j]:
+            i=i-1
+            j=j+1
+        return s[i+1:j]
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        max=''
+        for i in range(len(s)):
+            tmp =self.Check(s,i,i)
+            if len(tmp)>len(max):
+                max=tmp
+            temp =self.Check(s,i,i+1)
+            if len(temp)>len(max):
+                max=temp
+        return max
